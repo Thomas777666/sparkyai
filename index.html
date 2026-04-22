@@ -161,11 +161,13 @@ nav a.active::after {
 }
 
 .logo-big {
-    width: 100vw;
+    width: calc(100vw - 140px);
     max-width: none;
     height: auto;
+    max-height: 460px;
+    object-fit: contain;
     display: block;
-    margin: -6px auto 0;
+    margin: -4px auto 0;
 }
 
 #keyText {
