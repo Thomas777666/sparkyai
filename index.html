@@ -574,40 +574,168 @@ input {
     </div>
 </div>
 
-<script type="module" src="accounts.js"></script>
 <script type="module">
-const ACCOUNT_STORE = window.SparkyAccounts;
-let CURRENT_USER = null;
+(() => {
+    const STORAGE_KEY = "sparky_accounts_db";
 
-function openLogin(){
-    document.getElementById('loginModal').style.display = 'flex';
-}
-function closeLogin(){
-    document.getElementById('loginModal').style.display = 'none';
-}
+    const DEFAULT_ACCOUNTS = {
+        admin: {
+            password: "1234",
+            plan: "pro",
+            key: "SPARKY-PRO-FULL"
+        },
+        user: {
+            password: "1111",
+            plan: "plus",
+            key: "SPARKY-PLUS-ONE"
+        },
+        guest: {
+            password: "0000",
+            plan: "basic",
+            key: "SPARKY-FREE-NOW"
+        }
+    };
 
-function openRegister(){
-    document.getElementById('registerModal').style.display = 'flex';
-}
-function closeRegister(){
-    document.getElementById('registerModal').style.display = 'none';
-}
+    const PLAN_PREFIX = {
+        basic: "BASIC",
+        plus: "PLUS",
+        pro: "PRO"
+    };
 
-function openKey(key){
-    document.getElementById("keyText").textContent = key;
-    document.getElementById("keyModal").style.display = "flex";
-}
+    function normalizeLogin(value) {
+        return String(value || "").trim().toLowerCase();
+    }
 
-function closeKey(){
-    document.getElementById("keyModal").style.display = "none";
-}
+    function getPlanPrefix(plan) {
+        return PLAN_PREFIX[plan] || "BASIC";
+    }
 
-window.openLogin = openLogin;
-window.closeLogin = closeLogin;
-window.openRegister = openRegister;
-window.closeRegister = closeRegister;
-window.openKey = openKey;
-window.closeKey = closeKey;
+    function generateKey(login, plan) {
+        const safeLogin = normalizeLogin(login).replace(/[^a-z0-9]/g, "").toUpperCase() || "USER";
+        const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+        return `SPARK-${getPlanPrefix(plan)}-${safeLogin.slice(0, 6)}-${suffix}`;
+    }
+
+    function loadAccounts() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            const saved = raw ? JSON.parse(raw) : {};
+            return { ...saved, ...DEFAULT_ACCOUNTS };
+        } catch (e) {
+            return { ...DEFAULT_ACCOUNTS };
+        }
+    }
+
+    function saveAccounts(accounts) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts));
+        } catch (e) {
+            // Ignore storage errors so the page still works without persistence.
+        }
+    }
+
+    function registerAccount(login, password) {
+        const username = normalizeLogin(login);
+        if (!username || !password) {
+            throw new Error("Login and password are required");
+        }
+
+        const accounts = loadAccounts();
+        if (accounts[username]) {
+            throw new Error("This login already exists");
+        }
+
+        const account = {
+            password,
+            plan: "basic",
+            key: generateKey(username, "basic")
+        };
+
+        accounts[username] = account;
+        saveAccounts(accounts);
+
+        return Promise.resolve({
+            authUser: { id: username, email: `${username}@local` },
+            session: null,
+            profile: {
+                username,
+                ...account
+            }
+        });
+    }
+
+    function authenticate(login, password) {
+        const username = normalizeLogin(login);
+        if (!username || !password) {
+            throw new Error("Login and password are required");
+        }
+
+        const accounts = loadAccounts();
+        const account = accounts[username];
+
+        if (!account || account.password !== password) {
+            throw new Error("Wrong login or password");
+        }
+
+        return Promise.resolve({
+            authUser: { id: username, email: `${username}@local` },
+            session: null,
+            profile: {
+                username,
+                ...account
+            }
+        });
+    }
+
+    function getCurrentProfile() {
+        return Promise.resolve(null);
+    }
+
+    function signOut() {
+        return Promise.resolve();
+    }
+
+    window.SparkyAccounts = {
+        normalizeLogin,
+        generateKey,
+        registerAccount,
+        authenticate,
+        getCurrentProfile,
+        signOut
+    };
+
+    const ACCOUNT_STORE = window.SparkyAccounts;
+    let CURRENT_USER = null;
+
+    function openLogin(){
+        document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeLogin(){
+        document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function openRegister(){
+        document.getElementById('registerModal').style.display = 'flex';
+    }
+    function closeRegister(){
+        document.getElementById('registerModal').style.display = 'none';
+    }
+
+    function openKey(key){
+        document.getElementById("keyText").textContent = key;
+        document.getElementById("keyModal").style.display = "flex";
+    }
+
+    function closeKey(){
+        document.getElementById("keyModal").style.display = "none";
+    }
+
+    window.openLogin = openLogin;
+    window.closeLogin = closeLogin;
+    window.openRegister = openRegister;
+    window.closeRegister = closeRegister;
+    window.openKey = openKey;
+    window.closeKey = closeKey;
 
 /* SCROLL ANIMATION */
 const sections = document.querySelectorAll('.section');
