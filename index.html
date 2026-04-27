@@ -505,7 +505,7 @@ input {
     }
 
     .logo-big {
-        width: min(78vw, 300px);
+        width: min(84vw, 380px);
         height: auto;
     }
 
@@ -806,8 +806,108 @@ input {
     </div>
 </div>
 
-<script type="module" src="accounts.js"></script>
 <script type="module">
+const ACCOUNTS_KEY = "sparky_accounts_v1";
+const CURRENT_USER_KEY = "sparky_current_user_v1";
+
+function readJson(key, fallback) {
+    try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+    } catch {
+        return fallback;
+    }
+}
+
+function writeJson(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function normalizeLogin(login) {
+    return String(login || "").trim().toLowerCase();
+}
+
+function loadAccounts() {
+    return readJson(ACCOUNTS_KEY, []);
+}
+
+function saveAccounts(accounts) {
+    writeJson(ACCOUNTS_KEY, accounts);
+}
+
+function getCurrentProfile() {
+    return Promise.resolve(readJson(CURRENT_USER_KEY, null));
+}
+
+function setCurrentProfile(profile) {
+    writeJson(CURRENT_USER_KEY, profile);
+}
+
+function generateKey() {
+    return `SP-${Math.random().toString(36).slice(2, 8).toUpperCase()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+}
+
+function seedDefaultAccounts() {
+    const accounts = loadAccounts();
+    if (accounts.length > 0) return;
+
+    const defaults = [
+        { login: "guest", username: "guest", password: "0000", plan: "basic", key: "SPARK-FREE-NOW" },
+        { login: "user", username: "user", password: "1111", plan: "plus", key: "SPARK-PLUS--ONE" },
+        { login: "admin", username: "admin", password: "1234", plan: "pro", key: "SPARK-PRO-FULL" },
+    ];
+
+    saveAccounts(defaults);
+}
+
+async function registerAccount(login, password) {
+    const normalized = normalizeLogin(login);
+
+    if (!normalized || !password) {
+        throw new Error("Enter login and password");
+    }
+
+    const accounts = loadAccounts();
+    if (accounts.some(account => account.login === normalized)) {
+        throw new Error("This login already exists");
+    }
+
+    const profile = {
+        login: normalized,
+        username: normalized,
+        password: String(password),
+        plan: "basic",
+        key: generateKey(),
+    };
+
+    accounts.push(profile);
+    saveAccounts(accounts);
+    setCurrentProfile(profile);
+    return { profile };
+}
+
+async function authenticate(login, password) {
+    const normalized = normalizeLogin(login);
+    const accounts = loadAccounts();
+    const profile = accounts.find(account => account.login === normalized);
+
+    if (!profile || profile.password !== String(password)) {
+        throw new Error("Wrong login or password");
+    }
+
+    setCurrentProfile(profile);
+    return { profile };
+}
+
+seedDefaultAccounts();
+
+window.SparkyAccounts = {
+    normalizeLogin,
+    registerAccount,
+    authenticate,
+    getCurrentProfile,
+};
+
 const ACCOUNT_STORE = window.SparkyAccounts;
 let CURRENT_USER = null;
 
