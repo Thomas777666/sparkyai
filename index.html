@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SPARKY</title>
-<link rel="icon" type="image/png" href="sitelogo.png">
-<link rel="shortcut icon" type="image/png" href="sitelogo.png">
+<title>JARVIS</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -15,7 +13,7 @@ body {
     background: radial-gradient(circle at center, #020617, #000000);
     color: #00f7ff;
     overflow-x: hidden;
-    padding-top: 74px;
+    padding-top: 100px;
     scroll-behavior: smooth;
 }
 
@@ -37,6 +35,31 @@ header {
 
     border-bottom: 1px solid #00f7ff33;
     z-index: 1000;
+}
+
+.menu-toggle {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 42px;
+    min-width: 112px;
+    border: 1px solid #00f7ff;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #00f7ff;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    font: inherit;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(0, 247, 255, 0.12);
 }
 
 /* NAV */
@@ -99,7 +122,8 @@ nav a.active::after {
 /* LOGIN ICON */
 .login-icon {
     position: absolute;
-    right: 66px; 
+    right: 66px; /* Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†Р вЂљРЎвЂќР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р вЂ™Р’ВР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎС™Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р вЂ™Р’В Р В Р Р‹Р Р†Р вЂљРЎС™ Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р вЂ™Р’В Р В Р Р‹Р Р†Р вЂљРЎС™Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р Р†Р вЂљРЎСљР В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р РЋРІвЂћСћР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В°Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В° */
+    
     border: 1px solid #00f7ff;
     padding: 6px 14px;
     font-size: 14px;
@@ -115,7 +139,7 @@ nav a.active::after {
 
 .center-panel {
     position: relative;
-    margin-top: 10px;
+    margin-top: 60px;
     text-align: center;
     animation: fadeIn 1.5s ease;
 }
@@ -153,33 +177,15 @@ nav a.active::after {
 }
 
 .logo-small {
-    height: 70px;
-    width: 180px;
+    height: 60px;
+    width: 200px;
     position: relative;
     z-index: 2;
 }
 
-.install-guide {
-    margin-top: 25px;
-    text-align: left;
-    color: #b8c1c7;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.install-guide h3 {
-    color: #00f7ff;
-    margin-bottom: 10px;
-}
-
 .logo-big {
-    width: calc(100vw - 140px);
-    max-width: none;
-    height: auto;
-    max-height: 460px;
-    object-fit: contain;
-    display: block;
-    margin: -4px auto 0;
+    width: 1300px;
+    height: 350px;
 }
 
 #keyText {
@@ -188,7 +194,7 @@ nav a.active::after {
     color: #00ff88;
 }
 
-/* ABOUT TEXT */
+/* ABOUT TEXT (Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎвЂєР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В»Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р вЂ™Р’В Р В Р’В Р Р†Р вЂљР’В°Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎС™Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎвЂє Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’ВµР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎС™Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р вЂ™Р’В Р В Р Р‹Р Р†Р вЂљРЎС™Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›, Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р Р‹Р РЋРІвЂћСћР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р РЋРІР‚С” Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В·Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В°Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р Р†Р вЂљРЎС™Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎвЂєР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р Р†Р вЂљРІвЂћСћР В РІР‚в„ўР вЂ™Р’В»Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎвЂєР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎвЂєР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В Р вЂ№Р В Р вЂ Р В РІР‚С™Р РЋРЎС™) */
 #about p {
     color: #b8c1c7;
     line-height: 1.8;
@@ -409,6 +415,198 @@ input {
     from {opacity: 0; transform: translateY(20px);} 
     to {opacity: 1; transform: translateY(0);} 
 }
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 96px;
+    }
+
+    header {
+        height: auto;
+        min-height: 76px;
+        padding: 10px 14px;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .logo-small {
+        width: 112px;
+        height: auto;
+    }
+
+    nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 12px;
+        right: 12px;
+        transform: none;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(2, 6, 23, 0.98);
+        border: 1px solid #00f7ff33;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        z-index: 1001;
+    }
+
+    header.menu-open nav {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    nav a {
+        display: block;
+        padding: 10px 12px;
+        font-size: 12px;
+        border-radius: 10px;
+        background: rgba(0, 247, 255, 0.05);
+    }
+
+    nav a::after {
+        left: 12px;
+        right: 12px;
+    }
+
+    .login-icon {
+        position: static;
+        margin-left: auto;
+        margin-right: 0;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 999px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        z-index: 1002;
+    }
+
+    .center-panel {
+        margin-top: 20px;
+        padding: 0 16px;
+    }
+
+    .logo-big {
+        width: min(92vw, 360px);
+        height: auto;
+    }
+
+    .center-panel h1 {
+        font-size: 30px;
+    }
+
+    .center-panel p {
+        font-size: 13px;
+    }
+
+    .section {
+        padding: 70px 16px;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .card h2,
+    .privacy h3 {
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    #about p,
+    #privacy p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .plans {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .plan {
+        min-width: 0;
+        padding: 16px;
+    }
+
+    .price {
+        font-size: 22px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .modal-content,
+    .key-box {
+        width: calc(100vw - 32px);
+        max-width: 360px;
+        padding: 20px 16px;
+        box-sizing: border-box;
+    }
+
+    input {
+        font-size: 16px;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .auth-switch {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding-top: 90px;
+    }
+
+    header {
+        padding: 10px 12px;
+    }
+
+    .logo-small {
+        width: 96px;
+    }
+
+    nav a {
+        font-size: 11px;
+        padding: 7px 9px;
+    }
+
+    .login-icon {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+
+    .menu-toggle {
+        min-width: 96px;
+        height: 38px;
+        font-size: 11px;
+        padding: 0 12px;
+    }
+
+    .center-panel h1 {
+        font-size: 26px;
+    }
+
+    .section {
+        padding: 60px 12px;
+    }
+}
 </style>
 </head>
 
@@ -428,6 +626,9 @@ input {
     </div>
 
     <div class="login-icon" onclick="openLogin()">LOGIN</div>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+        OPEN LIST
+    </button>
 </header>
 
 <div class="center-panel">
@@ -458,25 +659,13 @@ input {
     <div class="card">
         <h2>DOWNLOAD</h2>
 
-        <a href="https://www.dropbox.com/scl/fi/3pj7w4hwg1v2gpeyqjvpb/Jarvis.zip?rlkey=82102dc9cdou38lp2dn4zjycy&st=nvsp7pi6&dl=1" target="_blank">
+        <a href="jarvis.exe" download>
             <button>Download for Windows</button>
         </a>
 
-        <a href="jarvis.apk" download>
+         <a href="jarvis.apk" download>
             <button>Download for Android</button>
         </a>
-
-        <div class="install-guide">
-            <h3>Installation Guide</h3>
-            <p>1. Download the ZIP file from the website.</p>
-            <p>2. Extract the downloaded archive.</p>
-            <p>3. Inside the extracted folder, you will find another ZIP file — extract it as well.</p>
-            <p>4. Open the final folder.</p>
-            <p>5. Run the application file (.exe) to start the program.</p>
-        </div>
-
-    </div>
-</div>
 
     </div>
 </div>
@@ -599,290 +788,143 @@ input {
     </div>
 </div>
 
+<script type="module" src="accounts.js"></script>
 <script type="module">
-(() => {
-    const STORAGE_KEY = "sparky_accounts_db";
+const ACCOUNT_STORE = window.SparkyAccounts;
+let CURRENT_USER = null;
 
-    const DEFAULT_ACCOUNTS = {
-        admin: {
-            password: "1234",
-            plan: "pro",
-            key: "SPARKY-PRO-FULL"
-        },
-        user: {
-            password: "1111",
-            plan: "plus",
-            key: "SPARKY-PLUS-ONE"
-        },
-        guest: {
-            password: "0000",
-            plan: "basic",
-            key: "SPARKY-FREE-NOW"
-        }
-    };
+function openLogin(){
+    document.getElementById('loginModal').style.display = 'flex';
+}
+function closeLogin(){
+    document.getElementById('loginModal').style.display = 'none';
+}
 
-    const PLAN_PREFIX = {
-        basic: "BASIC",
-        plus: "PLUS",
-        pro: "PRO"
-    };
+function openRegister(){
+    document.getElementById('registerModal').style.display = 'flex';
+}
+function closeRegister(){
+    document.getElementById('registerModal').style.display = 'none';
+}
 
-    function normalizeLogin(value) {
-        return String(value || "").trim().toLowerCase();
-    }
+function openKey(key){
+    document.getElementById("keyText").textContent = key;
+    document.getElementById("keyModal").style.display = "flex";
+}
 
-    function getPlanPrefix(plan) {
-        return PLAN_PREFIX[plan] || "BASIC";
-    }
+function closeKey(){
+    document.getElementById("keyModal").style.display = "none";
+}
 
-    function generateKey(login, plan) {
-        const safeLogin = normalizeLogin(login).replace(/[^a-z0-9]/g, "").toUpperCase() || "USER";
-        const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
-        return `SPARK-${getPlanPrefix(plan)}-${safeLogin.slice(0, 6)}-${suffix}`;
-    }
+window.openLogin = openLogin;
+window.closeLogin = closeLogin;
+window.openRegister = openRegister;
+window.closeRegister = closeRegister;
+window.openKey = openKey;
+window.closeKey = closeKey;
 
-    function loadAccounts() {
-        try {
-            const raw = localStorage.getItem(STORAGE_KEY);
-            const saved = raw ? JSON.parse(raw) : {};
-            return { ...saved, ...DEFAULT_ACCOUNTS };
-        } catch (e) {
-            return { ...DEFAULT_ACCOUNTS };
-        }
-    }
-
-    function saveAccounts(accounts) {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts));
-        } catch (e) {
-            // Ignore storage errors so the page still works without persistence.
-        }
-    }
-
-    function registerAccount(login, password) {
-        const username = normalizeLogin(login);
-        if (!username || !password) {
-            throw new Error("Login and password are required");
-        }
-
-        const accounts = loadAccounts();
-        if (accounts[username]) {
-            throw new Error("This login already exists");
-        }
-
-        const account = {
-            password,
-            plan: "basic",
-            key: generateKey(username, "basic")
-        };
-
-        accounts[username] = account;
-        saveAccounts(accounts);
-
-        return Promise.resolve({
-            authUser: { id: username, email: `${username}@local` },
-            session: null,
-            profile: {
-                username,
-                ...account
-            }
-        });
-    }
-
-    function authenticate(login, password) {
-        const username = normalizeLogin(login);
-        if (!username || !password) {
-            throw new Error("Login and password are required");
-        }
-
-        const accounts = loadAccounts();
-        const account = accounts[username];
-
-        if (!account || account.password !== password) {
-            throw new Error("Wrong login or password");
-        }
-
-        return Promise.resolve({
-            authUser: { id: username, email: `${username}@local` },
-            session: null,
-            profile: {
-                username,
-                ...account
-            }
-        });
-    }
-
-    function getCurrentProfile() {
-        return Promise.resolve(null);
-    }
-
-    function signOut() {
-        return Promise.resolve();
-    }
-
-    window.SparkyAccounts = {
-        normalizeLogin,
-        generateKey,
-        registerAccount,
-        authenticate,
-        getCurrentProfile,
-        signOut
-    };
-
-    const ACCOUNT_STORE = window.SparkyAccounts;
-    let CURRENT_USER = null;
-
-    function openLogin(){
-        document.getElementById('loginModal').style.display = 'flex';
-        document.getElementById('loginName').value = '';
-        document.getElementById('loginPassword').value = '';
-        setTimeout(() => document.getElementById('loginName').focus(), 0);
-    }
-    function closeLogin(){
-        document.getElementById('loginModal').style.display = 'none';
-    }
-
-    function openRegister(){
-        document.getElementById('registerModal').style.display = 'flex';
-        document.getElementById('registerName').value = '';
-        document.getElementById('registerPassword').value = '';
-        setTimeout(() => document.getElementById('registerName').focus(), 0);
-    }
-    function closeRegister(){
-        document.getElementById('registerModal').style.display = 'none';
-    }
-
-    function openKey(key){
-        document.getElementById("keyText").textContent = key;
-        document.getElementById("keyModal").style.display = "flex";
-    }
-
-    function closeKey(){
-        document.getElementById("keyModal").style.display = "none";
-    }
-
-    window.openLogin = openLogin;
-    window.closeLogin = closeLogin;
-    window.openRegister = openRegister;
-    window.closeRegister = closeRegister;
-    window.openKey = openKey;
-    window.closeKey = closeKey;
-
-    /* SCROLL ANIMATION */
-    const sections = document.querySelectorAll('.section');
-    window.addEventListener('scroll', () => {
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            if(top < window.innerHeight - 100){
-                sec.classList.add('active');
-            }
-        });
-    });
-
-    /* NAV ACTIVE STATE */
-    const links = document.querySelectorAll("nav a");
-
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            links.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
-        });
-    });
-
-    window.addEventListener("load", () => {
-        const currentLink = [...links].find(link => link.getAttribute("href") === window.location.hash) || links[0];
-
-        if (!currentLink) return;
-
-        links.forEach(link => link.classList.remove("active"));
-        currentLink.classList.add("active");
-    });
-
-    async function refreshCurrentProfile() {
-        const profile = await ACCOUNT_STORE.getCurrentProfile();
-
-        if (!profile) return;
-
-        CURRENT_USER = profile;
-        applyPlan(profile.plan);
-    }
-
-    document.getElementById("loginSubmit").addEventListener("click", async () => {
-        const login = ACCOUNT_STORE.normalizeLogin(document.getElementById("loginName").value);
-        const password = document.getElementById("loginPassword").value;
-
-        try {
-            const result = await ACCOUNT_STORE.authenticate(login, password);
-            CURRENT_USER = result.profile;
-            applyPlan(result.profile.plan);
-            closeLogin();
-            alert(`Welcome, ${result.profile.username}`);
-        } catch (error) {
-            alert(error?.message || "Wrong login or password");
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add('active');
         }
     });
+});
 
-    document.getElementById("loginName").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            document.getElementById("loginSubmit").click();
-        }
+/* NAV ACTIVE STATE */
+const links = document.querySelectorAll("nav a");
+const header = document.querySelector("header");
+const menuToggle = document.querySelector(".menu-toggle");
+
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        links.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+        header.classList.remove("menu-open");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
     });
+});
 
-    document.getElementById("loginPassword").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            document.getElementById("loginSubmit").click();
-        }
+if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen = header.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
+}
 
-    document.getElementById("openRegisterLink").addEventListener("click", (e) => {
-        e.preventDefault();
+window.addEventListener("load", () => {
+    const currentLink = [...links].find(link => link.getAttribute("href") === window.location.hash) || links[0];
+
+    if (!currentLink) return;
+
+    links.forEach(link => link.classList.remove("active"));
+    currentLink.classList.add("active");
+});
+
+async function refreshCurrentProfile() {
+    const profile = await ACCOUNT_STORE.getCurrentProfile();
+
+    if (!profile) return;
+
+    CURRENT_USER = profile;
+    applyPlan(profile.plan);
+}
+
+document.getElementById("loginSubmit").addEventListener("click", async () => {
+    const login = ACCOUNT_STORE.normalizeLogin(document.getElementById("loginName").value);
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+        const result = await ACCOUNT_STORE.authenticate(login, password);
+        CURRENT_USER = result.profile;
+        applyPlan(result.profile.plan);
         closeLogin();
-        openRegister();
-    });
+        alert(`Welcome, ${result.profile.username}`);
+    } catch (error) {
+        alert(error?.message || "Wrong login or password");
+    }
+});
 
-    document.getElementById("backToLoginLink").addEventListener("click", (e) => {
-        e.preventDefault();
+document.getElementById("openRegisterLink").addEventListener("click", (e) => {
+    e.preventDefault();
+    closeLogin();
+    openRegister();
+});
+
+document.getElementById("backToLoginLink").addEventListener("click", (e) => {
+    e.preventDefault();
+    closeRegister();
+    openLogin();
+});
+
+document.getElementById("registerSubmit").addEventListener("click", async () => {
+    const login = ACCOUNT_STORE.normalizeLogin(document.getElementById("registerName").value);
+    const password = document.getElementById("registerPassword").value;
+
+    if (!login || !password) {
+        alert("Enter login and password");
+        return;
+    }
+
+    try {
+        const result = await ACCOUNT_STORE.registerAccount(login, password);
+        CURRENT_USER = result.profile;
+        applyPlan(result.profile.plan);
         closeRegister();
-        openLogin();
-    });
+        alert(`Account created. Plan: ${result.profile.plan}`);
+    } catch (error) {
+        alert(error?.message || "This login already exists");
+    }
+});
 
-    document.getElementById("registerSubmit").addEventListener("click", async () => {
-        const login = ACCOUNT_STORE.normalizeLogin(document.getElementById("registerName").value);
-        const password = document.getElementById("registerPassword").value;
+window.addEventListener("DOMContentLoaded", () => {
+    refreshCurrentProfile();
+});
 
-        if (!login || !password) {
-            alert("Enter login and password");
-            return;
-        }
-
-        try {
-            const result = await ACCOUNT_STORE.registerAccount(login, password);
-            CURRENT_USER = result.profile;
-            applyPlan(result.profile.plan);
-            closeRegister();
-            alert(`Account created. Plan: ${result.profile.plan}`);
-        } catch (error) {
-            alert(error?.message || "This login already exists");
-        }
-    });
-
-    document.getElementById("registerName").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            document.getElementById("registerSubmit").click();
-        }
-    });
-
-    document.getElementById("registerPassword").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            document.getElementById("registerSubmit").click();
-        }
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-        refreshCurrentProfile();
-    });
-
-    function applyPlan(plan) {
+function applyPlan(plan) {
 
     const plans = document.querySelectorAll(".plan");
 
@@ -921,8 +963,7 @@ input {
             }
         };
     }
-    }
-})();
+}
 </script>
 </body>
 </html>
