@@ -183,11 +183,16 @@ nav a.active::after {
     width: 200px;
     position: relative;
     z-index: 2;
+    object-fit: contain;
+    display: block;
 }
 
 .logo-big {
-    width: 1300px;
-    height: 400px;
+    width: min(92vw, 1300px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 #keyText {
